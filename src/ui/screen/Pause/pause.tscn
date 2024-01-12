@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5m6s4584c8mq"]
+
+[ext_resource type="Script" path="res://src/gui/Screen/Pause/Pause.gd" id="1_43ikg"]
+[ext_resource type="Theme" uid="uid://4p0ab3usm05f" path="res://assets/layout/Button_menu.tres" id="1_jkb2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38v3h"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 0.490196)
+
+[node name="Pause" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43ikg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_38v3h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -147.5
+offset_right = 306.0
+offset_bottom = 147.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Checkpoint")
+focus_next = NodePath("../Checkpoint")
+focus_previous = NodePath("../Quit")
+theme = ExtResource("1_jkb2o")
+text = "Resume"
+
+[node name="Checkpoint" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Resume")
+theme = ExtResource("1_jkb2o")
+text = "Restart from Checkpoint"
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Checkpoint")
+focus_neighbor_bottom = NodePath("../Resume")
+focus_next = NodePath("../Resume")
+focus_previous = NodePath("../Checkpoint")
+theme = ExtResource("1_jkb2o")
+text = "Quit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Checkpoint" to="." method="_on_checkpoint_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

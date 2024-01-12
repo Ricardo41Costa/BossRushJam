@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://bja3ijdkamosd"]
+
+[ext_resource type="Script" path="res://src/gui/Screen/Main/Main.gd" id="1_7ktca"]
+[ext_resource type="Theme" uid="uid://4p0ab3usm05f" path="res://assets/layout/Button_menu.tres" id="2_5i0ry"]
+
+[node name="Main" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_7ktca")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -402.5
+offset_top = 200.0
+offset_right = 402.5
+offset_bottom = 368.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 120
+text = "Ghost Wacker"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -323.0
+offset_top = -465.0
+offset_right = 323.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Start" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Credits")
+focus_next = NodePath("../Credits")
+focus_previous = NodePath("../Quit")
+theme = ExtResource("2_5i0ry")
+text = "Start Game"
+
+[node name="Credits" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Start")
+theme = ExtResource("2_5i0ry")
+text = "Credits
+"
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Start")
+focus_next = NodePath("../Start")
+focus_previous = NodePath("../Credits")
+theme = ExtResource("2_5i0ry")
+text = "Exit Game
+"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

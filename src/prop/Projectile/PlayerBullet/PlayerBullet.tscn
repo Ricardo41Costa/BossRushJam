@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfhux3uakikfm"]
+
+[ext_resource type="Script" path="res://src/prop/Projectile/PlayerBullet/PlayerBullet.gd" id="1_1y3rb"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.470588, 0.384314, 0.384314, 1)
+
+[sub_resource type="CapsuleMesh" id="2"]
+material = SubResource("3")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="4"]
+radius = 0.05
+height = 0.1
+
+[node name="PlayerBullet" type="RigidBody3D"]
+collision_layer = 128
+collision_mask = 7
+script = ExtResource("1_1y3rb")
+DAMAGE = 8
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
+
+[node name="body" type="MeshInstance3D" parent="."]
+mesh = SubResource("2")
+
+[node name="BulletArea" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 7
+
+[node name="CollisionShape" type="CollisionShape3D" parent="BulletArea"]
+shape = SubResource("4")
+
+[connection signal="body_entered" from="BulletArea" to="." method="_on_body_entered"]

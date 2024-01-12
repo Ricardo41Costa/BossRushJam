@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4j401vfhl8ci"]
+
+[ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="1_dn088"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gmeif"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_p1l85"]
+sky_material = SubResource("ProceduralSkyMaterial_gmeif")
+
+[sub_resource type="Environment" id="Environment_2bvcp"]
+background_mode = 2
+sky = SubResource("Sky_p1l85")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jepvb"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Prototype" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2bvcp")
+
+[node name="blockout" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="blockout"]
+use_collision = true
+collision_layer = 16
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="blockout/CSGCombiner3D"]
+radius = 20.0
+height = 6.0
+sides = 12
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="blockout/CSGCombiner3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.531427, 0)
+operation = 2
+radius = 19.0
+height = 7.0
+sides = 12
+material = SubResource("StandardMaterial3D_jepvb")
+
+[node name="actor" type="Node3D" parent="."]
+
+[node name="Player" parent="actor" instance=ExtResource("1_dn088")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -2.59483, 0)

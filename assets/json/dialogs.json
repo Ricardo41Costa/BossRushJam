@@ -1,0 +1,33 @@
+{
+	"teste1": [
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	],
+	"teste2": [
+		"AMOTE CATOTA"
+	],
+	"teste3":[
+		"XISDE TESTE LMFAO :DDDDDDDDDDDD"
+	],
+	"prototype1":[
+		"Try to capture all the ghosts and reach the finish line.",
+		"Stealth is recommended but not required."
+	],
+	"prototype2":[
+		"Use tall grass to sneak or hide from ghosts."
+	],
+	"prototype3":[
+		"Big Rock"
+	],
+	"prototype4":[
+		"If you can't capture the blue ghosts don't worry!",
+		"They will respawn if you restart the checkpoint."
+	],
+	"prototype5":[
+		"( ͡° ͜ʖ ͡°)"
+	],
+	"prototype6":[
+		"Pay attetion for the eye below your health bar!",
+		"It indicates if you have been detected by any ghosts."
+	],
+}

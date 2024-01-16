@@ -5,6 +5,11 @@ extends Actor
 @onready var death_rect = $SpringArm3D/Camera/CanvasLayer/Main/DeathCont
 @onready var pause_menu = $SpringArm3D/Camera/CanvasLayer/Pause
 
+@onready var left_bullet = preload("res://src/prop/Projectile/PlayerBullet/PlayerBulletLeft.tscn")
+@onready var right_bullet = preload("res://src/prop/Projectile/PlayerBullet/PlayerBulletRight.tscn")
+
+var can_shoot = true
+
 var direction = Vector3.ZERO
 
 func _ready():
@@ -24,22 +29,7 @@ func _physics_process(delta):
 			
 			velocity = calculate_move_velocity(direction, SPEED)
 		Constants.ATTACK:
-			if velocity.y != 0:
-				if anim_player.get_assigned_animation() != Constants.ANIM_ATTACK_3 and anim_player.get_current_animation() != Constants.ANIM_ATTACK_1:
-					anim_player.play(Constants.ANIM_ATTACK_3)
-					await anim_player.animation_finished
-					
-					check_state()
-			else:
-				if anim_player.get_current_animation() != Constants.ANIM_ATTACK_3 and anim_player.get_current_animation() != Constants.ANIM_ATTACK_RETURN_3:
-					if anim_player.get_current_animation() != Constants.ANIM_ATTACK_1 and anim_player.get_current_animation() != Constants.ANIM_ATTACK_RETURN_1:
-						anim_player.play(Constants.ANIM_ATTACK_1)
-						await anim_player.animation_finished
-						
-						anim_player.play(Constants.ANIM_ATTACK_RETURN_1)
-						await anim_player.animation_finished
-						
-						check_state()
+			animate_player()
 			
 			velocity = calculate_idle_velocity()
 		Constants.HURT:
@@ -48,9 +38,8 @@ func _physics_process(delta):
 				await anim_player.animation_finished
 				state = Constants.IDLE
 			
-			var target_direction = global_transform.origin.direction_to(target_pos)
-			var look_direction = Vector2(target_direction.z, target_direction.x)
-			rotation.y = look_direction.angle()
+			var target_direction = global_position.direction_to(target_pos)
+			rotate_direction(target_direction)
 			
 			calculate_knockback_velocity(target_direction, 0.5)
 		Constants.DEATH:
@@ -76,15 +65,52 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("game_pause") and not SceneManager.is_changing:
-		pause_menu.start()
+		pass
 	
-	if event.is_action_pressed("player_attack"):
+	if event.is_action_pressed("player_shoot") and can_shoot:
 		state = Constants.ATTACK
+		can_shoot = false
+		$TEMPShootTimer.start()
+		
+		var camera3d = $SpringArm3D/Camera
+		var to = camera3d.project_ray_normal(event.position)
+		
+		rotate_direction(to)
+		
+		var bullet = left_bullet.instantiate()
+		add_child(bullet)
+		bullet.transform = global_transform
+		
+		check_state()
+	
+	if event.is_action_pressed("player_shoot_alt") and can_shoot:
+		state = Constants.ATTACK
+		can_shoot = false
+		$TEMPShootTimer.start()
+		
+		var camera3d = $SpringArm3D/Camera
+		var to = camera3d.project_ray_normal(event.position)
+		
+		rotate_direction(to)
+		
+		var bullet = right_bullet.instantiate()
+		add_child(bullet)
+		bullet.transform = global_transform
+		
+		check_state()
 
-func _on_attack_body_entered(body):
-	if state == Constants.ATTACK:
-		if body.is_in_group(Constants.ENEMY_GROUP):
-			body.set_damage(self, DAMAGE)
+func _on_timeout():
+	can_shoot = true
+
+func disable_collision(disable):
+	set_collision_mask_value(4, disable)
+
+func rotate_direction(direction : Vector3, camera : bool = false):
+	var look_direction = Vector2(direction.z, direction.x)
+	rotation.y = look_direction.angle()
+	
+	if camera:
+		spring_arm.reset_camera()
 
 func check_state():
 	if direction.length() > 0:
@@ -94,19 +120,18 @@ func check_state():
 
 func animate_player():
 	if velocity.x != 0 or velocity.z != 0:
-		var look_direction = Vector2(velocity.z, velocity.x)
-		rotation.y = look_direction.angle()
+		rotate_direction(velocity)
 		
-		if animate_player_y():
-			return
+		#if animate_player_y():
+		#	return
 		
-		animate_movement()
-		return
+		#animate_movement()
+		#return
 	
-	if animate_player_y():
-		return
+	#if animate_player_y():
+	#	return
 	
-	animate_idle()
+	#animate_idle()
 
 func animate_idle():
 	if anim_player.get_current_animation() != Constants.ANIM_IDLE:

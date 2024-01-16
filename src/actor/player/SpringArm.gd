@@ -32,8 +32,7 @@ func _unhandled_input(event):
 		return
 	
 	if event.is_action_pressed("player_camera_reset"):
-		rotation_degrees.y = get_parent().rotation_degrees.y - 180
-		rotation_degrees.x = -30
+		reset_camera()
 	
 	if event is InputEventMouseMotion:
 		rotation_degrees.x -= event.relative.y * MOUSE_SENSITIVITY
@@ -48,3 +47,7 @@ func _unhandled_input(event):
 		
 		if event.axis == 3:
 			joystick_value_y = event.axis_value
+
+func reset_camera():
+	rotation_degrees.y = get_parent().rotation_degrees.y - 180
+	rotation_degrees.x = -30

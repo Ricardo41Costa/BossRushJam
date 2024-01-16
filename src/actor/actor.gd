@@ -60,5 +60,5 @@ func calculate_knockback_velocity(direction, force):
 	direction *= -1
 	velocity = calculate_move_velocity(direction, force)
 
-func get_actor_position() -> Vector3:
-	return global_transform.origin
+#func get_actor_position() -> Vector3:
+#	return global_position

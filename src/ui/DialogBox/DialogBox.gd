@@ -7,7 +7,6 @@ extends PanelContainer
 @onready var label = $MarginContainer/TextBox
 
 func _ready():
-	add_to_group(Constants.DIALOG_UI_GROUP)
 	set_dialog_visibility(false)
 
 func set_dialog_visibility(isVisible):

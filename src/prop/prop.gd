@@ -8,12 +8,10 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = calculate_gravity_velocity(delta)
+	move_and_slide()
 
 func calculate_gravity_velocity(delta) -> Vector3:
 	var out = velocity
 	if !is_on_floor():
 		out.y -= gravity * delta
 	return out
-
-func get_prop_position() -> Vector3:
-	return global_transform.origin

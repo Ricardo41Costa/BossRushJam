@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs5tdsohvhh16"]
+[gd_scene load_steps=5 format=3 uid="uid://cs5tdsohvhh16"]
 
 [ext_resource type="Script" path="res://src/utils/SwitchManager/SwitchManager.gd" id="1_d1xvo"]
+[ext_resource type="Texture2D" uid="uid://cm6tpapcll6vi" path="res://assets/img/health_bar_under.png" id="2_fb5iu"]
+[ext_resource type="Texture2D" uid="uid://vkwugqc4rplt" path="res://assets/img/health_bar_over_both.png" id="3_ec0a1"]
+[ext_resource type="Texture2D" uid="uid://cshpiv4cc8mt8" path="res://assets/img/health_bar_progress.png" id="4_vtcuq"]
 
 [node name="SwitchManager" type="Control"]
 layout_mode = 3
@@ -11,6 +14,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_d1xvo")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 140.0
+offset_bottom = 140.0
+max_value = 3.0
+value = 3.0
+fill_mode = 5
+texture_under = ExtResource("2_fb5iu")
+texture_over = ExtResource("3_ec0a1")
+texture_progress = ExtResource("4_vtcuq")
 
 [node name="SwapTimer" type="Timer" parent="."]
 wait_time = 0.5

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://blb75csglg2g5"]
+
+[ext_resource type="PackedScene" uid="uid://ccow75yvgjo8b" path="res://assets/mesh/Arena/arena.tscn" id="1_dw5ya"]
+[ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="2_ud17v"]
+[ext_resource type="PackedScene" uid="uid://bapa2ag17in3v" path="res://src/prop/ExplosivePot/ExplosivePot.tscn" id="3_6worp"]
+[ext_resource type="PackedScene" uid="uid://d1ebtad282cxc" path="res://src/prop/HealingPot/HealingPot.tscn" id="4_db7wo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2mkkp"]
+sky_top_color = Color(0.4, 0.6, 0.8, 1)
+sky_horizon_color = Color(0.85, 0.887255, 0.814706, 1)
+sky_energy_multiplier = 0.5
+ground_bottom_color = Color(1, 0.94902, 0.458824, 1)
+ground_horizon_color = Color(0.85, 0.887255, 0.814706, 1)
+
+[sub_resource type="Sky" id="Sky_aa0hs"]
+sky_material = SubResource("ProceduralSkyMaterial_2mkkp")
+
+[sub_resource type="Environment" id="Environment_vysba"]
+background_mode = 2
+sky = SubResource("Sky_aa0hs")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vysba")
+
+[node name="arena" parent="." instance=ExtResource("1_dw5ya")]
+
+[node name="Actor" type="Node3D" parent="."]
+
+[node name="Player" parent="Actor" instance=ExtResource("2_ud17v")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 15.1541, 0.308088, 4.13982)
+
+[node name="Prop" type="Node3D" parent="."]
+
+[node name="ExplosivePot" parent="Prop" instance=ExtResource("3_6worp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.333, 0.426016, -2.09927)
+
+[node name="ExplosivePot2" parent="Prop" instance=ExtResource("3_6worp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52679, 0.426016, 7.59561)
+
+[node name="ExplosivePot3" parent="Prop" instance=ExtResource("3_6worp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61152, 0.426016, 7.59561)
+
+[node name="ExplosivePot4" parent="Prop" instance=ExtResource("3_6worp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78454, 0.426016, -5.97475)
+
+[node name="HealingPot" parent="Prop" instance=ExtResource("4_db7wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86232, 0.426016, -8.68916)
+
+[node name="HealingPot2" parent="Prop" instance=ExtResource("4_db7wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362372, 0.426016, 3.10448)
+
+[node name="HealingPot3" parent="Prop" instance=ExtResource("4_db7wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75634, 0.426016, 3.10448)
+
+[node name="HealingPot4" parent="Prop" instance=ExtResource("4_db7wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75634, 0.426016, 10.3769)
+
+[node name="HealingPot5" parent="Prop" instance=ExtResource("4_db7wo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50012, 0.426016, 13.7624)

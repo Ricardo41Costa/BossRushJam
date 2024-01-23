@@ -13,6 +13,7 @@ var can_shoot = true
 var direction = Vector3.ZERO
 
 func _ready():
+	add_to_group(Constants.ACTOR_GROUP)
 	add_to_group(Constants.PLAYER_GROUP)
 
 func _physics_process(delta):
@@ -162,27 +163,25 @@ func get_direction() -> Vector3:
 	return out
 
 func set_damage(attacker, damage):
-	target_pos = attacker.get_actor_position()
+	target_pos = attacker.global_position
 	
 	HEALTH -= damage
 	
-	#get_tree().call_group(Utils.HEALTH_UI_GROUP, "update_value", HEALTH)
+	SwitchManager.set_health_value(HEALTH)
 	
 	if HEALTH <= 0:
 		state = Constants.DEATH
 		return
 	
-	state = Constants.HURT
+	#state = Constants.HURT
 
 func kill(type):
 	HEALTH = 0
 	state = Constants.DEATH
 
 func heal(value):
-	var health_ui = get_tree().get_first_node_in_group(Constants.HEALTH_UI_GROUP)
-	
 	HEALTH += value
-	if HEALTH > health_ui.get_max_health():
-		HEALTH = health_ui.get_max_health()
+	if HEALTH > 3:
+		HEALTH = 3
 	
-	health_ui.update_value(HEALTH)
+	SwitchManager.set_health_value(HEALTH)

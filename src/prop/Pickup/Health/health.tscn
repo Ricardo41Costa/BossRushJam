@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://njkgd3prf3w8"]
+
+[ext_resource type="PackedScene" uid="uid://b62suxghroiii" path="res://assets/mesh/health/Health_cross.tscn" id="1_0r4t2"]
+[ext_resource type="Script" path="res://src/prop/Pickup/Pickup.gd" id="1_obt37"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20kv7"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="Animation" id="Animation_fork1"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health_cross:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health_cross:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0), Vector3(0, -0.25, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kr1rx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health_cross:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health_cross:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cdtlg"]
+_data = {
+"Idle": SubResource("Animation_fork1"),
+"RESET": SubResource("Animation_kr1rx")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hq2y"]
+radius = 1.0
+
+[node name="Health" type="RigidBody3D"]
+top_level = true
+collision_layer = 8
+collision_mask = 16
+input_ray_pickable = false
+sleeping = true
+lock_rotation = true
+script = ExtResource("1_obt37")
+RANGE = 3
+
+[node name="Health_cross" parent="." instance=ExtResource("1_0r4t2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_20kv7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cdtlg")
+}
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="PickupArea" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickupArea"]
+shape = SubResource("SphereShape3D_1hq2y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timeout"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_body_entered"]

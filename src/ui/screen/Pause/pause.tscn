@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5m6s4584c8mq"]
+[gd_scene load_steps=5 format=3 uid="uid://b5m6s4584c8mq"]
 
-[ext_resource type="Script" path="res://src/gui/Screen/Pause/Pause.gd" id="1_43ikg"]
-[ext_resource type="Theme" uid="uid://4p0ab3usm05f" path="res://assets/layout/Button_menu.tres" id="1_jkb2o"]
+[ext_resource type="Script" path="res://src/ui/screen/Pause/Pause.gd" id="1_cb67l"]
+[ext_resource type="Theme" uid="uid://b8mca134g4c1g" path="res://assets/layout/Button_menu.tres" id="2_76n5h"]
+[ext_resource type="FontFile" uid="uid://cs8ss63clsl2c" path="res://assets/font/ceria-lebaran.regular.otf" id="3_0x0gk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38v3h"]
-bg_color = Color(0.164706, 0.164706, 0.164706, 0.490196)
+bg_color = Color(0.164706, 0.164706, 0.164706, 0.294118)
 
 [node name="Pause" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_43ikg")
+script = ExtResource("1_cb67l")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -47,7 +47,8 @@ focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Checkpoint")
 focus_next = NodePath("../Checkpoint")
 focus_previous = NodePath("../Quit")
-theme = ExtResource("1_jkb2o")
+theme = ExtResource("2_76n5h")
+theme_override_fonts/font = ExtResource("3_0x0gk")
 text = "Resume"
 
 [node name="Checkpoint" type="Button" parent="Panel/VBoxContainer"]
@@ -56,8 +57,9 @@ focus_neighbor_top = NodePath("../Resume")
 focus_neighbor_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Resume")
-theme = ExtResource("1_jkb2o")
-text = "Restart from Checkpoint"
+theme = ExtResource("2_76n5h")
+theme_override_fonts/font = ExtResource("3_0x0gk")
+text = "Restart"
 
 [node name="Quit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -65,7 +67,8 @@ focus_neighbor_top = NodePath("../Checkpoint")
 focus_neighbor_bottom = NodePath("../Resume")
 focus_next = NodePath("../Resume")
 focus_previous = NodePath("../Checkpoint")
-theme = ExtResource("1_jkb2o")
+theme = ExtResource("2_76n5h")
+theme_override_fonts/font = ExtResource("3_0x0gk")
 text = "Quit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

@@ -1,16 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgaywdmv07gcq"]
+[gd_scene load_steps=4 format=3 uid="uid://dgaywdmv07gcq"]
 
 [ext_resource type="Script" path="res://src/prop/Projectile/PlayerBullet/PlayerBullet.gd" id="1_tqt2e"]
-[ext_resource type="Material" uid="uid://dsxaibavclsj8" path="res://assets/material/PlayerBulletRight.tres" id="2_8k4t1"]
+[ext_resource type="PackedScene" uid="uid://bhndf8h02c7b3" path="res://assets/mesh/RightProjectile/RightProjectile.tscn" id="2_cfo8i"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bayiw"]
 height = 0.12
 radius = 0.22
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_jox3y"]
-top_radius = 0.2
-bottom_radius = 0.2
-height = 0.1
 
 [node name="PlayerBulletRight" type="Area3D"]
 collision_layer = 32
@@ -22,13 +17,12 @@ DAMAGE = 8
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_bayiw")
 
-[node name="body" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_jox3y")
-surface_material_override/0 = ExtResource("2_8k4t1")
-
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="RightProjectile" parent="." instance=ExtResource("2_cfo8i")]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_timeout"]

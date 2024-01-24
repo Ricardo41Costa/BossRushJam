@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3evblujm47i"
-path.s3tc="res://.godot/imported/color_palette_player.png-a3dee0a050db6e9f42e302b269353435.s3tc.ctex"
+uid="uid://dttes8hll6qah"
+path="res://.godot/imported/LeftAura_color_palette_player.png-26c3dd2096986e95592b9cc8bf725ed2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/img/color_palette_player.png"
-dest_files=["res://.godot/imported/color_palette_player.png-a3dee0a050db6e9f42e302b269353435.s3tc.ctex"]
+source_file="res://assets/mesh/LeftAura/LeftAura_color_palette_player.png"
+dest_files=["res://.godot/imported/LeftAura_color_palette_player.png-26c3dd2096986e95592b9cc8bf725ed2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

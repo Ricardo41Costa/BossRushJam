@@ -1,6 +1,22 @@
-[gd_scene load_steps=92 format=3 uid="uid://ccow75yvgjo8b"]
+[gd_scene load_steps=95 format=3 uid="uid://ccow75yvgjo8b"]
 
 [ext_resource type="Texture2D" uid="uid://bm2t6lfdgdl6m" path="res://assets/mesh/Arena/arena_color_palette_arena.png" id="1_6q2ao"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6q64r"]
+sky_top_color = Color(0.4, 0.6, 0.8, 1)
+sky_horizon_color = Color(0.4, 0.6, 0.8, 1)
+sky_energy_multiplier = 0.5
+ground_bottom_color = Color(1, 0.94902, 0.458824, 1)
+ground_horizon_color = Color(1, 0.94902, 0.458824, 1)
+
+[sub_resource type="Sky" id="Sky_aa0hs"]
+sky_material = SubResource("ProceduralSkyMaterial_6q64r")
+
+[sub_resource type="Environment" id="Environment_xrquj"]
+background_mode = 2
+sky = SubResource("Sky_aa0hs")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fedsx"]
 resource_name = "Material"
@@ -1240,6 +1256,13 @@ points = PackedVector3Array(-0.0180023, -0.25, -3.70374, -0.0180023, 0.25, -3.70
 points = PackedVector3Array(-0.0180023, -0.25, -3.70374, -0.0180023, 0.25, -3.70374, 0.182678, -0.25, -3.70374, -0.0180023, -0.25, 3.70365, 0.182678, 0.25, -3.70374, -0.0180023, 0.25, 3.70365, 0.182678, -0.25, 3.70365, 0.182678, 0.25, 3.70365)
 
 [node name="arena" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xrquj")
 
 [node name="area" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_vo3es")

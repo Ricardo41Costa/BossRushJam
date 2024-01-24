@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3evblujm47i"
-path.s3tc="res://.godot/imported/color_palette_player.png-a3dee0a050db6e9f42e302b269353435.s3tc.ctex"
+uid="uid://340hrqkbbdei"
+path="res://.godot/imported/RightProjectile_color_palette_player.png-ce5c670db884eebd1e6d724e10c493a6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/img/color_palette_player.png"
-dest_files=["res://.godot/imported/color_palette_player.png-a3dee0a050db6e9f42e302b269353435.s3tc.ctex"]
+source_file="res://assets/mesh/RightProjectile/RightProjectile_color_palette_player.png"
+dest_files=["res://.godot/imported/RightProjectile_color_palette_player.png-ce5c670db884eebd1e6d724e10c493a6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

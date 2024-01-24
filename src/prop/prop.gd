@@ -18,8 +18,8 @@ func set_selected(selected : bool, is_left : bool = true):
 	is_selected = selected
 	
 	if is_left:
-		$LeftSelected.visible = is_selected
-		$RightSelected.visible = false
+		$LeftAura.visible = is_selected
+		$RightAura.visible = false
 	else:
-		$LeftSelected.visible = false
-		$RightSelected.visible = is_selected
+		$LeftAura.visible = false
+		$RightAura.visible = is_selected

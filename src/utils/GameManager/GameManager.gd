@@ -10,6 +10,7 @@ var right_prop : Prop = null
 
 @onready var timer = $SwapTimer
 @onready var health_bar = $HealthBar
+@onready var boss_health_bar = $BossHealthBar
 
 func _on_timeout():
 	var player = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
@@ -77,6 +78,15 @@ func _input(event):
 
 func set_health_value(health):
 	health_bar.value = health
+
+func set_health_boss_value(health):
+	boss_health_bar.value = health
+
+func set_health_visibility(visible):
+	health_bar.visible = visible
+
+func set_health_boss_visibility(visible):
+	boss_health_bar.visible = visible
 
 func change_over_texture():
 	if left_prop != null and right_prop != null:

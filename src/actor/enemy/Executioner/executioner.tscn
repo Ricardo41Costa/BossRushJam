@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dimyhsjt06n55"]
+
+[ext_resource type="Script" path="res://src/actor/enemy/Executioner/Executioner.gd" id="1_a5idk"]
+[ext_resource type="PackedScene" uid="uid://3prov2itwd8s" path="res://assets/mesh/Executioner/Executioner.tscn" id="2_xlr2h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iky4p"]
+height = 1.8
+
+[node name="Executioner" type="CharacterBody3D"]
+collision_layer = 5
+collision_mask = 154
+script = ExtResource("1_a5idk")
+HEALTH = 3.0
+SPEED = 5.0
+JUMP_FORCE = 0.0
+DAMAGE = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_iky4p")
+
+[node name="body" parent="." instance=ExtResource("2_xlr2h")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="eyebrows" parent="body/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.0297333, -0.0315305, 0.00188685, -0.00569467, 0.00379819, 0.0106161, -0.0147572, -0.0649944, -0.000294966, -0.0516978, 0.790507, -0.0932397)
+
+[node name="eyes" parent="body/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.0234392, -5.10066e-10, 1.96668e-09, -1.98754e-09, -8.77306e-05, 0.023439, -7.95626e-10, -0.023439, -8.77269e-05, -0.0453495, 0.759307, -0.0706387)
+
+[node name="beard" parent="body/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.0297584, 1.05845e-09, 1.35635e-09, -2.56841e-09, 0.0153215, 0.0121557, -9.87678e-10, -0.0121557, 0.0153215, 2.17515e-08, 0.640207, -0.140595)
+
+[node name="tooth" parent="body/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.0122045, -1.37761e-09, 0.00285629, -5.12227e-09, 0.0138413, 5.93718e-09, -0.00652929, -1.234e-08, 0.00533897, -0.0453129, 0.683759, -0.120062)
+
+[node name="scimitar" parent="body/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.0150795, 0.00132286, 3.84171e-09, -0.00440191, -0.00453171, -1.60362e-08, -1.5134e-09, -5.17043e-09, 0.0157089, 0.219043, 0.133819, -0.0110292)
+
+[node name="AttackArea" parent="body/Armature/Skeleton3D/scimitar/scimitar" index="0"]
+collision_layer = 64
+collision_mask = 11
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="body_entered" from="body/Armature/Skeleton3D/scimitar/scimitar/AttackArea" to="." method="_on_scimitar_entered"]
+
+[editable path="body"]

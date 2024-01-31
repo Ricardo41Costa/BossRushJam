@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://tffbc6jpobsw"]
+
+[ext_resource type="PackedScene" uid="uid://ccow75yvgjo8b" path="res://assets/mesh/Arena/arena.tscn" id="1_fdc35"]
+[ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="2_0pbsw"]
+[ext_resource type="PackedScene" uid="uid://dimyhsjt06n55" path="res://src/actor/enemy/Executioner/executioner.tscn" id="3_87l3r"]
+[ext_resource type="PackedScene" uid="uid://bapa2ag17in3v" path="res://src/prop/ExplosivePot/ExplosivePot.tscn" id="4_ifcyf"]
+[ext_resource type="PackedScene" uid="uid://d1ebtad282cxc" path="res://src/prop/HealingPot/HealingPot.tscn" id="5_833sq"]
+
+[node name="MainSceneWarrior" type="Node3D"]
+
+[node name="arena" parent="." instance=ExtResource("1_fdc35")]
+
+[node name="Actor" type="Node3D" parent="."]
+
+[node name="Player" parent="Actor" instance=ExtResource("2_0pbsw")]
+transform = Transform3D(-0.261953, 0, -0.649138, 0, 0.7, 0, 0.649138, 0, -0.261953, 12.1436, 0.308088, 2.92498)
+
+[node name="Executioner" parent="Actor" instance=ExtResource("3_87l3r")]
+transform = Transform3D(0.437163, 0, 0.899382, 0, 1, 0, -0.899382, 0, 0.437163, -12.4082, 0.831003, -2.7348)
+
+[node name="Prop" type="Node3D" parent="."]
+
+[node name="ExplosivePot" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.680388, 0, -0.732852, 0, 1, 0, 0.732852, 0, 0.680388, 10.2418, 0.426016, -7.2986)
+
+[node name="ExplosivePot2" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.680388, 0, -0.732852, 0, 1, 0, 0.732852, 0, 0.680388, 8.67296, 0.426016, -8.85032)
+
+[node name="ExplosivePot3" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.680388, 0, -0.732852, 0, 1, 0, 0.732852, 0, 0.680388, 7.4083, 0.426016, -10.3506)
+
+[node name="ExplosivePot4" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.977353, 0, 0.211615, 0, 1, 0, -0.211615, 0, 0.977353, -1.07033, 0.426016, -12.4256)
+
+[node name="ExplosivePot5" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.977353, 0, 0.211615, 0, 1, 0, -0.211615, 0, 0.977353, -3.08593, 0.426016, -11.9499)
+
+[node name="ExplosivePot6" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(0.977353, 0, 0.211615, 0, 1, 0, -0.211615, 0, 0.977353, -5.13707, 0.426016, -11.4282)
+
+[node name="HealingPot" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(0.964879, 0, -0.262694, 0, 1, 0, 0.262694, 0, 0.964879, 1.23056, 0.426016, -12.0805)
+
+[node name="HealingPot2" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(0.964879, 0, -0.262694, 0, 1, 0, 0.262694, 0, 0.964879, 3.13989, 0.426016, -11.5607)
+
+[node name="HealingPot3" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(0.964879, 0, -0.262694, 0, 1, 0, 0.262694, 0, 0.964879, 5.04083, 0.426016, -11.0431)
+
+[node name="ExplosivePot7" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.698265, 0, 0.71584, 0, 1, 0, -0.71584, 0, -0.698265, -10.1888, 0.426016, 7.41961)
+
+[node name="ExplosivePot8" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.698265, 0, 0.71584, 0, 1, 0, -0.71584, 0, -0.698265, -8.76968, 0.426016, 8.73986)
+
+[node name="ExplosivePot9" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.698265, 0, 0.71584, 0, 1, 0, -0.71584, 0, -0.698265, -7.53104, 0.426016, 10.1443)
+
+[node name="ExplosivePot10" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.978227, 0, -0.207536, 0, 1, 0, 0.207536, 0, -0.978227, 1.39842, 0.426016, 12.6881)
+
+[node name="ExplosivePot11" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.978227, 0, -0.207536, 0, 1, 0, 0.207536, 0, -0.978227, 3.23696, 0.426016, 12.2147)
+
+[node name="ExplosivePot12" parent="Prop" instance=ExtResource("4_ifcyf")]
+transform = Transform3D(-0.978227, 0, -0.207536, 0, 1, 0, 0.207536, 0, -0.978227, 4.99711, 0.426016, 11.6919)
+
+[node name="HealingPot4" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(-0.963775, 0, 0.266717, 0, 1, 0, -0.266717, 0, -0.963775, -1.65006, 0.426016, 12.4677)
+
+[node name="HealingPot5" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(-0.963775, 0, 0.266717, 0, 1, 0, -0.266717, 0, -0.963775, -3.38882, 0.426016, 12.0283)
+
+[node name="HealingPot6" parent="Prop" instance=ExtResource("5_833sq")]
+transform = Transform3D(-0.963775, 0, 0.266717, 0, 1, 0, -0.266717, 0, -0.963775, -5.14588, 0.426016, 11.606)

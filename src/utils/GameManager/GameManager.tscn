@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs5tdsohvhh16"]
+[gd_scene load_steps=7 format=3 uid="uid://cs5tdsohvhh16"]
 
-[ext_resource type="Script" path="res://src/utils/SwitchManager/SwitchManager.gd" id="1_d1xvo"]
+[ext_resource type="Script" path="res://src/utils/GameManager/GameManager.gd" id="1_d1xvo"]
 [ext_resource type="Texture2D" uid="uid://cm6tpapcll6vi" path="res://assets/img/health_bar_under.png" id="2_fb5iu"]
 [ext_resource type="Texture2D" uid="uid://vkwugqc4rplt" path="res://assets/img/health_bar_over_both.png" id="3_ec0a1"]
 [ext_resource type="Texture2D" uid="uid://cshpiv4cc8mt8" path="res://assets/img/health_bar_progress.png" id="4_vtcuq"]
+[ext_resource type="Texture2D" uid="uid://dbaqnkkw55b8x" path="res://assets/img/health_bar_boss_under.png" id="5_4ine2"]
+[ext_resource type="Texture2D" uid="uid://dg84pgdq1mwcw" path="res://assets/img/health_bar_boss_progress.png" id="6_la7ck"]
 
 [node name="SwitchManager" type="Control"]
 layout_mode = 3
@@ -27,6 +29,25 @@ fill_mode = 5
 texture_under = ExtResource("2_fb5iu")
 texture_over = ExtResource("3_ec0a1")
 texture_progress = ExtResource("4_vtcuq")
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -112.0
+offset_right = 375.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 3.0
+value = 3.0
+texture_under = ExtResource("5_4ine2")
+texture_progress = ExtResource("6_la7ck")
 
 [node name="SwapTimer" type="Timer" parent="."]
 wait_time = 0.5

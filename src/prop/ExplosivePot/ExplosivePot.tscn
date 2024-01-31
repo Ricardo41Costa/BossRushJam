@@ -1,40 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bapa2ag17in3v"]
+[gd_scene load_steps=8 format=3 uid="uid://bapa2ag17in3v"]
 
 [ext_resource type="Script" path="res://src/prop/ExplosivePot/ExplosivePot.gd" id="1_nqqca"]
 [ext_resource type="PackedScene" uid="uid://di4viuav6fi6w" path="res://assets/mesh/ExplosivePot/ExplosivePot.tscn" id="2_44abs"]
-[ext_resource type="Texture2D" uid="uid://dsrqkhi1vbrqm" path="res://assets/img/Flame.png" id="3_xmcxg"]
+[ext_resource type="PackedScene" uid="uid://j1mk0yw3cs07" path="res://assets/particles/explosion_particle.tscn" id="3_layxr"]
 [ext_resource type="PackedScene" uid="uid://cidu0upm4mcdn" path="res://assets/mesh/RightAura/RightAura.tscn" id="4_cflsn"]
 [ext_resource type="PackedScene" uid="uid://do7lx11ad8wlg" path="res://assets/mesh/LeftAura/LeftAura.tscn" id="5_thn61"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xul45"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_xmcxg")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_ropx3"]
-offsets = PackedFloat32Array(0.260163, 0.585366, 1)
-colors = PackedColorArray(0.579254, 1.39579e-06, 4.81307e-07, 1, 0.5514, 0.272346, 0.0127531, 1, 0.372549, 0.372549, 0.372549, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjll1"]
-gradient = SubResource("Gradient_ropx3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0olk"]
-lifetime_randomness = 1.0
-spread = 180.0
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.5
-color_ramp = SubResource("GradientTexture1D_tjll1")
-
-[sub_resource type="QuadMesh" id="QuadMesh_3rwn6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4wfh"]
 radius = 2.0
@@ -49,19 +19,11 @@ script = ExtResource("1_nqqca")
 
 [node name="body" parent="." instance=ExtResource("2_44abs")]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-material_override = SubResource("StandardMaterial3D_xul45")
-emitting = false
-amount = 300
-lifetime = 0.7
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_v0olk")
-draw_pass_1 = SubResource("QuadMesh_3rwn6")
+[node name="GPUParticles3D" parent="." instance=ExtResource("3_layxr")]
 
 [node name="BlastRadius" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlastRadius"]
 shape = SubResource("SphereShape3D_r4wfh")

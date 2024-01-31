@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 Constants="*res://src/utils/Constants.gd"
 SceneManager="*res://src/utils/SceneManager/SceneManager.tscn"
 DialogManager="*res://src/utils/DialogManager/DialogManager.tscn"
-SwitchManager="*res://src/utils/SwitchManager/SwitchManager.tscn"
+GameManager="*res://src/utils/GameManager/GameManager.tscn"
 
 [file_customization]
 
@@ -111,3 +111,5 @@ game_pause={
 3d_physics/layer_4="Prop"
 3d_physics/layer_5="World"
 3d_physics/layer_6="Projectile"
+3d_physics/layer_7="EnemyAttack"
+3d_physics/layer_8="Explosion"

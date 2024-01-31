@@ -9,9 +9,9 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group(Constants.PROP_GROUP):
 		if is_left:
-			SwitchManager.set_left_prop(body)
+			GameManager.set_left_prop(body)
 		else:
-			SwitchManager.set_right_prop(body)
+			GameManager.set_right_prop(body)
 	queue_free()
 
 func _on_timeout():

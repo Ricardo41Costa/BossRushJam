@@ -1,24 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bndaskydtaue0"]
+[gd_scene load_steps=5 format=3 uid="uid://bndaskydtaue0"]
 
 [ext_resource type="Script" path="res://src/actor/player/player.gd" id="1_fb8iw"]
+[ext_resource type="PackedScene" uid="uid://cw4vncnnx0p1w" path="res://assets/mesh/Player/Scene/player.tscn" id="2_hrj2x"]
 [ext_resource type="Script" path="res://src/actor/player/SpringArm.gd" id="3_ctjvl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8prb"]
-radius = 0.25
-height = 1.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hynak"]
-radius = 0.25
-height = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_ddpt4"]
-radius = 0.25
-height = 0.5
+radius = 0.3
+height = 1.5
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 collision_layer = 3
-collision_mask = 28
+collision_mask = 156
 script = ExtResource("1_fb8iw")
 HEALTH = 3.0
 SPEED = 5.0
@@ -28,14 +21,8 @@ JUMP_FORCE = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0262069, 0)
 shape = SubResource("CapsuleShape3D_e8prb")
 
-[node name="body" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_hynak")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="body"]
-
-[node name="face" type="MeshInstance3D" parent="body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208559, 0.0492654)
-mesh = SubResource("SphereMesh_ddpt4")
+[node name="body" parent="." instance=ExtResource("2_hrj2x")]
+transform = Transform3D(-1.99981, 0, 0.0275406, 0, 1.5, 0, -0.0275406, 0, -1.99981, 0, 0, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 0, 0)
@@ -50,8 +37,3 @@ transform = Transform3D(1, -3.55271e-15, -2.13163e-14, 0, 1, 2.98023e-08, 0, -2.
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SpringArm3D/Camera"]
-
-[node name="TEMPShootTimer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="TEMPShootTimer" to="." method="_on_timeout"]

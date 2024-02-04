@@ -26,8 +26,10 @@ func do_action():
 
 func start_blast():
 	var mesh = $body
+	var audio = $ExplosionPlayer
 	mesh.visible = false
 	particles.emitting = true
+	audio.play()
 	
 	var area = get_node("BlastRadius")
 	var bodies = area.get_overlapping_bodies()
@@ -35,5 +37,5 @@ func start_blast():
 		var space = get_world_3d().direct_space_state
 		var parameters = PhysicsRayQueryParameters3D.create(global_transform.origin, body.global_transform.origin)
 		var collision = space.intersect_ray(parameters)
-		if collision.collider.is_in_group(Constants.ACTOR_GROUP):
+		if not collision.is_empty() and collision.collider.is_in_group(Constants.ACTOR_GROUP):
 			body.set_damage(self, 1)

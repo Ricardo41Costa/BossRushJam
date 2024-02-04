@@ -60,32 +60,32 @@ alignment = 1
 [node name="Start" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Credits")
-focus_next = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Options")
+focus_next = NodePath("../Options")
 focus_previous = NodePath("../Quit")
 theme = ExtResource("2_5i0ry")
 text = "Start Game"
 
-[node name="Credits" type="Button" parent="Panel/VBoxContainer"]
+[node name="Options" type="Button" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Start")
 theme = ExtResource("2_5i0ry")
-text = "Load Game
-"
+text = "Options"
 
 [node name="Quit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Start")
 focus_next = NodePath("../Start")
-focus_previous = NodePath("../Credits")
+focus_previous = NodePath("../Options")
 theme = ExtResource("2_5i0ry")
 text = "Quit
 "
 
 [connection signal="pressed" from="Panel/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Options" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

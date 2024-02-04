@@ -1,30 +1,65 @@
-[gd_scene load_steps=13 format=3 uid="uid://jse2ri3xcuh8"]
+[gd_scene load_steps=20 format=3 uid="uid://jse2ri3xcuh8"]
 
 [ext_resource type="Script" path="res://src/utils/SceneManager/SceneManager.gd" id="1_gsbpi"]
-[ext_resource type="LabelSettings" path="res://assets/layout/Scene_Change_Font.tres" id="2_m3775"]
+[ext_resource type="Texture2D" uid="uid://bvvy7gqxd56h2" path="res://assets/img/loading_disk.png" id="2_w22kf"]
+[ext_resource type="Texture2D" uid="uid://b7bvgd6c274h8" path="res://assets/img/loading_disk/loading_disk2.png" id="3_oqrcm"]
+[ext_resource type="Texture2D" uid="uid://b0jlex1a28own" path="res://assets/img/loading_disk/loading_disk1.png" id="4_volxp"]
+[ext_resource type="Texture2D" uid="uid://cjbu1piacpg1c" path="res://assets/img/loading_disk/loading_disk4.png" id="5_0470n"]
+[ext_resource type="Texture2D" uid="uid://bg0l5h06gy5mb" path="res://assets/img/loading_disk/loading_disk5.png" id="6_gmd5s"]
+[ext_resource type="Texture2D" uid="uid://btdjsto6qu5py" path="res://assets/img/loading_disk/loading_disk6.png" id="7_q23e2"]
+[ext_resource type="Texture2D" uid="uid://k4qaiincur78" path="res://assets/img/loading_disk/loading_disk7.png" id="8_e4td4"]
+[ext_resource type="Texture2D" uid="uid://dejle718sshm8" path="res://assets/img/loading_disk/loading_disk8.png" id="9_3s0ar"]
+[ext_resource type="FontFile" uid="uid://cs8ss63clsl2c" path="res://assets/font/ceria-lebaran.regular.otf" id="10_mx13e"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_i034n"]
-animations = []
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw7pa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w22kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oqrcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_volxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0470n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gmd5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q23e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e4td4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3s0ar")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
-[sub_resource type="LabelSettings" id="LabelSettings_td1tu"]
-font_size = 80
-font_color = Color(0, 0.423529, 0.956863, 1)
-outline_size = 1
-outline_color = Color(0, 0.423529, 0.956863, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_4focm"]
+font = ExtResource("10_mx13e")
+font_size = 128
+font_color = Color(1, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_mfxxc"]
-font_size = 100
-font_color = Color(1, 1, 0, 1)
-outline_size = 1
-outline_color = Color(1, 1, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_6jh6r"]
+font = ExtResource("10_mx13e")
+font_size = 128
+font_color = Color(1, 0.85098, 0, 1)
 
-[sub_resource type="Animation" id="Animation_qs481"]
-resource_name = "Dissolve"
-length = 0.5
+[sub_resource type="Animation" id="Animation_iuikx"]
+resource_name = "EndGame"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LoadingScreen:modulate")
+tracks/0/path = NodePath("Background:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,46 +71,190 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DeathScreen/Label:visible")
+tracks/1/path = NodePath("Background/Loading:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/Congratulations:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/Congratulations/Label:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_abdt5"]
+resource_name = "GameOver"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/GameOver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/GameOver/Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background/Loading:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_5dphq"]
+resource_name = "Loading"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Loading:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/GameOver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_oxwrf"]
+resource_name = "Loading2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/Loading:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FinishIncompleteScreen:modulate")
+tracks/2/path = NodePath("Background/GameOver:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FinishCompleteScreen:modulate")
+tracks/3/path = NodePath("Background/Congratulations:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_bj7g8"]
+[sub_resource type="Animation" id="Animation_42igx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LoadingScreen:modulate")
+tracks/0/path = NodePath("Background:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,7 +266,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("DeathScreen/Label:visible")
+tracks/1/path = NodePath("Background/Loading:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -99,19 +278,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DeathScreen:color")
+tracks/2/path = NodePath("Background/GameOver:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FinishIncompleteScreen:modulate")
+tracks/3/path = NodePath("Background/GameOver/Label:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -123,154 +302,43 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FinishCompleteScreen:modulate")
+tracks/4/path = NodePath("Background/Congratulations:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background/Congratulations/Label:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_chaub"]
-resource_name = "Undissolve"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LoadingScreen:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeathScreen/Label:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DeathScreen:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6jskp"]
-resource_name = "complete_finish"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FinishCompleteScreen:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ywpa0"]
-resource_name = "fade_in"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DeathScreen/Label:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeathScreen:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 3, 4, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ihikb"]
-resource_name = "incomplete_finish"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FinishIncompleteScreen:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7jk5d"]
 _data = {
-"Dissolve": SubResource("Animation_qs481"),
-"RESET": SubResource("Animation_bj7g8"),
-"Undissolve": SubResource("Animation_chaub"),
-"complete_finish": SubResource("Animation_6jskp"),
-"fade_in": SubResource("Animation_ywpa0"),
-"incomplete_finish": SubResource("Animation_ihikb")
+"EndGame": SubResource("Animation_iuikx"),
+"GameOver": SubResource("Animation_abdt5"),
+"Loading": SubResource("Animation_5dphq"),
+"Loading2": SubResource("Animation_oxwrf"),
+"RESET": SubResource("Animation_42igx")
 }
 
 [node name="SceneManager" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_gsbpi")
 
-[node name="DeathScreen" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 0, 0, 0)
-
-[node name="Label" type="Label" parent="DeathScreen"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "GAME OVER"
-label_settings = ExtResource("2_m3775")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LoadingScreen" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="Background" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -279,7 +347,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="LoadingScreen"]
+[node name="Loading" type="Control" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -290,53 +359,23 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-mouse_filter = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingScreen/Control"]
-position = Vector2(-32, -32)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_i034n")
-animation = &""
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Loading"]
+position = Vector2(-44, -41)
+sprite_frames = SubResource("SpriteFrames_bw7pa")
+frame_progress = 0.492571
 
-[node name="FinishIncompleteScreen" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="FinishIncompleteScreen"]
+[node name="GameOver" type="Control" parent="Background"]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -487.0
-offset_top = -68.5
-offset_right = 487.0
-offset_bottom = 68.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Oh no, you didn't capture all the ghosts :("
-label_settings = SubResource("LabelSettings_td1tu")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FinishCompleteScreen" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="FinishCompleteScreen"]
+[node name="Label" type="Label" parent="Background/GameOver"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -349,11 +388,39 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "congratulations"
-label_settings = SubResource("LabelSettings_mfxxc")
+text = "Game Over"
+label_settings = SubResource("LabelSettings_4focm")
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
+
+[node name="Congratulations" type="Control" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/Congratulations"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -148.5
+offset_right = 361.0
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "End of Game
+Thanks for playing"
+label_settings = SubResource("LabelSettings_6jh6r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

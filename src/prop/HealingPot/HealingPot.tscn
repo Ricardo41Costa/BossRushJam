@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1ebtad282cxc"]
+[gd_scene load_steps=11 format=3 uid="uid://d1ebtad282cxc"]
 
 [ext_resource type="Script" path="res://src/prop/HealingPot/HealingPot.gd" id="1_3dx8x"]
 [ext_resource type="PackedScene" uid="uid://c61823jjcsryx" path="res://assets/mesh/Pot/Pot.tscn" id="2_8nfdh"]
 [ext_resource type="Texture2D" uid="uid://dsrqkhi1vbrqm" path="res://assets/img/Flame.png" id="3_7khhf"]
 [ext_resource type="PackedScene" uid="uid://cidu0upm4mcdn" path="res://assets/mesh/RightAura/RightAura.tscn" id="4_i881a"]
 [ext_resource type="PackedScene" uid="uid://do7lx11ad8wlg" path="res://assets/mesh/LeftAura/LeftAura.tscn" id="5_dl2r6"]
+[ext_resource type="AudioStream" uid="uid://bhgjb2ge3jjud" path="res://assets/audio/pot_breaking.mp3" id="6_yx0q5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s236f"]
 transparency = 1
@@ -59,5 +60,10 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_llj4d")
+
+[node name="BreakingPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yx0q5")
+volume_db = -15.0
+pitch_scale = 2.0
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_finished"]

@@ -8,11 +8,12 @@ func _ready():
 	add_to_group(Constants.ACTOR_GROUP)
 	add_to_group(Constants.ENEMY_GROUP)
 	state = Constants.ROAM
-	GameManager.set_health_value(HEALTH)
-	GameManager.set_health_boss_visibility(true)
+	GameManager.set_health_boss_value(HEALTH)
 
-func _process(delta):
-	if global_position.y < 0:
+func _process(_delta):
+	GameManager.set_health_boss_visibility(true if HEALTH > 0 else false)
+	
+	if global_position.y < 0.830:
 		global_position.y = 0.830
 
 func _physics_process(_delta):
@@ -75,8 +76,7 @@ func _physics_process(_delta):
 			if anim_player.assigned_animation != Constants.ANIM_DEATH:
 				anim_player.play(Constants.ANIM_DEATH)
 				await anim_player.animation_finished
-				
-				GameManager.set_health_boss_visibility(false)
+				GameManager.start_next_scene()
 			
 			var direction = global_transform.origin.direction_to(target_pos)
 			var look_direction = Vector2(direction.z, direction.x)
@@ -100,6 +100,9 @@ func _on_scimitar_entered(body):
 func set_damage(attacker, damage):
 	if state != Constants.HURT and state != Constants.DEATH:
 		state = Constants.HURT
+		
+		var audio = $HurtAudio
+		audio.play()
 		
 		target_pos = attacker.global_position
 		

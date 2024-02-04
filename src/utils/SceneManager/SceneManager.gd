@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var anim_sprite = $LoadingScreen/Control/AnimatedSprite2D
+@onready var anim_sprite = $Background/Loading/AnimatedSprite2D
 @onready var anim_player = $AnimationPlayer
 
 var thread: Thread
@@ -16,29 +16,33 @@ func _ready():
 func _exit_tree():
 	thread.wait_to_finish()
 
-func end_game(current_scene, complete):
-	is_changing = true
-	#anim_player.play(Utils.ANIM_INCOMPLETE_FINISH if complete else Utils.ANIM_COMPLETE_FINISH)
-	await anim_player.animation_finished
-	
-	change_scene(current_scene, "res://src/scene/MainScene.tscn")
+func reset_game():
+	change_scene(loaded_scene.resource_path)
 
-func game_over(current_scene, next_scene):
+func end_game():
 	is_changing = true
-	#anim_player.play(Utils.ANIM_FADE_IN)
+	anim_player.play("EndGame")
 	await anim_player.animation_finished
 	
-	change_scene(current_scene, next_scene)
+	change_scene("res://src/scene/MainScreen/MainScene.tscn", "Loading2")
 
-func change_scene(current_scene, next_scene):
+func game_over(next_scene):
 	is_changing = true
-	#anim_sprite.play(Utils.ANIM_DEFAULT)
-	#anim_player.play(Utils.ANIM_DISSOLVE)
+	anim_player.play("GameOver")
 	await anim_player.animation_finished
 	
-	current_scene.queue_free()
-	get_tree().unload_current_scene()
-	#ScoreManager.reset()
+	change_scene(next_scene, "Loading2")
+
+func change_scene(next_scene, loading_animation : String = "Loading"):
+	GameManager.set_in_game(false)
+	GameManager.reset()
+	is_changing = true
+	anim_sprite.play(Constants.ANIM_DEFAULT)
+	anim_player.play(loading_animation)
+	await anim_player.animation_finished
+	
+	var scene = get_tree().get_first_node_in_group(Constants.SCENE_GROUP)
+	scene.queue_free()
 	
 	thread.start(replace_scene.bind(next_scene))
 
@@ -51,8 +55,9 @@ func on_thread_done():
 
 func stop_loading():
 	is_changing = false
-	anim_player.play("Undissolve")
+	anim_player.play_backwards("Loading")
 	await anim_player.animation_finished
+	anim_player.play("RESET")
 	anim_sprite.stop()
 
 func replace_scene(next_scene):

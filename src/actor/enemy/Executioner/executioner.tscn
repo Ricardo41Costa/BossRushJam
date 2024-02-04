@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dimyhsjt06n55"]
+[gd_scene load_steps=6 format=3 uid="uid://dimyhsjt06n55"]
 
 [ext_resource type="Script" path="res://src/actor/enemy/Executioner/Executioner.gd" id="1_a5idk"]
 [ext_resource type="PackedScene" uid="uid://3prov2itwd8s" path="res://assets/mesh/Executioner/Executioner.tscn" id="2_xlr2h"]
+[ext_resource type="AudioStream" uid="uid://d4gp2p672067l" path="res://assets/audio/Executioner_hurt.mp3" id="3_fkqrf"]
+[ext_resource type="AudioStream" uid="uid://cxhuifnmr5mjj" path="res://assets/audio/Executioner_attack.mp3" id="4_2agyf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iky4p"]
 height = 1.8
@@ -41,6 +43,13 @@ collision_layer = 64
 collision_mask = 11
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fkqrf")
+
+[node name="Attack1Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2agyf")
+volume_db = 10.0
 
 [connection signal="body_entered" from="body/Armature/Skeleton3D/scimitar/scimitar/AttackArea" to="." method="_on_scimitar_entered"]
 

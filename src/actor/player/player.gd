@@ -13,6 +13,9 @@ var direction = Vector3.ZERO
 func _ready():
 	add_to_group(Constants.ACTOR_GROUP)
 	add_to_group(Constants.PLAYER_GROUP)
+	var camera = $SpringArm3D/Camera
+	camera.current = true
+	GameManager.set_health_value(HEALTH)
 
 func _physics_process(delta):
 	direction = get_direction()
@@ -44,8 +47,7 @@ func _physics_process(delta):
 				anim_player.play(Constants.ANIM_DEATH)
 			
 			if not SceneManager.is_changing:
-				SceneManager.game_over(get_tree().get_current_scene(), "res://src/scene/Prototype.tscn")
-				GameManager.set_health_visibility(false)
+				SceneManager.game_over(GameManager.get_scene_path())
 			
 			velocity = calculate_idle_velocity()
 	
@@ -53,7 +55,9 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _process(delta):
+func _process(_delta):
+	GameManager.set_health_visibility(true if HEALTH > 0 else false)
+	
 	if not state == Constants.DEATH:
 		spring_arm.global_transform.origin = global_transform.origin
 
@@ -100,6 +104,9 @@ func shoot(right : bool):
 	add_child(bullet)
 	bullet.transform = global_transform
 	
+	var audio = $ShotAudio
+	audio.play()
+	
 	anim_player.play("Shoot", -1, -2.0, true)
 	await anim_player.animation_finished
 	can_shoot = true
@@ -109,8 +116,8 @@ func shoot(right : bool):
 func disable_collision(disable):
 	set_collision_mask_value(4, disable)
 
-func rotate_direction(direction : Vector3, camera : bool = false):
-	var look_direction = Vector2(direction.z, direction.x)
+func rotate_direction(l_direction : Vector3, camera : bool = false):
+	var look_direction = Vector2(l_direction.z, l_direction.x)
 	rotation.y = look_direction.angle()
 	
 	if camera:
@@ -168,6 +175,9 @@ func get_direction() -> Vector3:
 func set_damage(attacker, damage):
 	if state != Constants.HURT or state != Constants.DEATH:
 		state = Constants.HURT
+		
+		var audio = $HurtAudio
+		audio.play()
 
 		target_pos = attacker.global_position
 
@@ -187,5 +197,8 @@ func heal(value):
 	HEALTH += value
 	if HEALTH > 3:
 		HEALTH = 3
+	
+	var audio = $HealthPlayer
+	audio.play()
 	
 	GameManager.set_health_value(HEALTH)

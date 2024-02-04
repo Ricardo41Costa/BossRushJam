@@ -27,10 +27,11 @@ func do_action():
 
 func start_blast():
 	var mesh = $body
+	var player = $BreakingPlayer
 	mesh.visible = false
 	particles.emitting = true
+	player.play()
 	
 	var health = health_pickup.instantiate()
-	var current_scene = get_tree().get_current_scene()
 	health.transform.origin = global_transform.origin
-	current_scene.add_child(health)
+	get_parent().add_child(health)

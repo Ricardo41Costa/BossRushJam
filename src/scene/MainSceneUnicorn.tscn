@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmm4eg1v0ugfu"]
+[gd_scene load_steps=7 format=3 uid="uid://cmm4eg1v0ugfu"]
 
 [ext_resource type="PackedScene" uid="uid://ccow75yvgjo8b" path="res://assets/mesh/Arena/arena.tscn" id="1_vahsd"]
+[ext_resource type="Script" path="res://src/scene/Scene.gd" id="1_y6y1l"]
 [ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="2_lama4"]
 [ext_resource type="PackedScene" uid="uid://bv5qtmvlh4es3" path="res://src/actor/enemy/Shadhavar/shadhavar.tscn" id="3_msbpl"]
 [ext_resource type="PackedScene" uid="uid://bapa2ag17in3v" path="res://src/prop/ExplosivePot/ExplosivePot.tscn" id="4_15ku5"]
 [ext_resource type="PackedScene" uid="uid://d1ebtad282cxc" path="res://src/prop/HealingPot/HealingPot.tscn" id="5_731pb"]
 
-[node name="MainSceneWarrior" type="Node3D"]
+[node name="MainScene" type="Node3D" groups=["SCENE_GROUP"]]
+script = ExtResource("1_y6y1l")
 
 [node name="arena" parent="." instance=ExtResource("1_vahsd")]
 

@@ -1,12 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7my7vv4ska58"]
 
 [ext_resource type="PackedScene" uid="uid://ccow75yvgjo8b" path="res://assets/mesh/Arena/arena.tscn" id="1_p5ljp"]
+[ext_resource type="Script" path="res://src/scene/Scene.gd" id="1_yvl1a"]
 [ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="2_8x0jb"]
-[ext_resource type="PackedScene" uid="uid://dimyhsjt06n55" path="res://src/actor/enemy/Executioner/executioner.tscn" id="3_6xdmg"]
 [ext_resource type="PackedScene" uid="uid://bapa2ag17in3v" path="res://src/prop/ExplosivePot/ExplosivePot.tscn" id="4_txtm2"]
 [ext_resource type="PackedScene" uid="uid://d1ebtad282cxc" path="res://src/prop/HealingPot/HealingPot.tscn" id="5_ush4l"]
 
-[node name="MainSceneWarrior" type="Node3D"]
+[node name="MainScene" type="Node3D" groups=["SCENE_GROUP"]]
+script = ExtResource("1_yvl1a")
 
 [node name="arena" parent="." instance=ExtResource("1_p5ljp")]
 
@@ -14,9 +15,6 @@
 
 [node name="Player" parent="Actor" instance=ExtResource("2_8x0jb")]
 transform = Transform3D(-0.261953, 0, -0.649138, 0, 0.7, 0, 0.649138, 0, -0.261953, 12.1436, 0.308088, 2.92498)
-
-[node name="Executioner" parent="Actor" instance=ExtResource("3_6xdmg")]
-transform = Transform3D(0.437163, 0, 0.899382, 0, 1, 0, -0.899382, 0, 0.437163, -12.4082, 0.831003, -2.7348)
 
 [node name="Prop" type="Node3D" parent="."]
 

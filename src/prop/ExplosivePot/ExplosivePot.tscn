@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bapa2ag17in3v"]
+[gd_scene load_steps=9 format=3 uid="uid://bapa2ag17in3v"]
 
 [ext_resource type="Script" path="res://src/prop/ExplosivePot/ExplosivePot.gd" id="1_nqqca"]
 [ext_resource type="PackedScene" uid="uid://di4viuav6fi6w" path="res://assets/mesh/ExplosivePot/ExplosivePot.tscn" id="2_44abs"]
 [ext_resource type="PackedScene" uid="uid://j1mk0yw3cs07" path="res://assets/particles/explosion_particle.tscn" id="3_layxr"]
 [ext_resource type="PackedScene" uid="uid://cidu0upm4mcdn" path="res://assets/mesh/RightAura/RightAura.tscn" id="4_cflsn"]
 [ext_resource type="PackedScene" uid="uid://do7lx11ad8wlg" path="res://assets/mesh/LeftAura/LeftAura.tscn" id="5_thn61"]
+[ext_resource type="AudioStream" uid="uid://6ua6k0bl7rn1" path="res://assets/audio/explosion.mp3" id="6_ngkaq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4wfh"]
 radius = 2.0
@@ -23,7 +24,7 @@ script = ExtResource("1_nqqca")
 
 [node name="BlastRadius" type="Area3D" parent="."]
 collision_layer = 128
-collision_mask = 7
+collision_mask = 263
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlastRadius"]
 shape = SubResource("SphereShape3D_r4wfh")
@@ -36,5 +37,9 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_6svae")
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ngkaq")
+pitch_scale = 1.5
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_finished"]

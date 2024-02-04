@@ -1990,6 +1990,21 @@ tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = PackedFloat32Array(0, 1, -8.1844e-05, -0.0269186, 0.707107, 0.706594)
 
+[sub_resource type="Animation" id="Animation_0mwvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_qyteh"]
 resource_name = "Sit"
 length = 0.0416667
@@ -3373,21 +3388,6 @@ tracks/38/interp = 1
 tracks/38/loop_wrap = true
 tracks/38/keys = PackedFloat32Array(0, 1, -8.1844e-05, -0.0269186, 0.707107, 0.706594)
 
-[sub_resource type="Animation" id="Animation_0mwvn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8is5k"]
 _data = {
 "Cheer": SubResource("Animation_mxlh4"),
@@ -3770,7 +3770,7 @@ bones/50/rotation = Quaternion(0.707093, -6.58557e-10, 0.004338, 0.707107)
 bones/50/scale = Vector3(1, 1, 1)
 
 [node name="eyes" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.022517, 1.64993e-16, 4.99981e-18, -4.99978e-18, -3.95812e-09, 0.022517, 1.64993e-16, -0.022517, -3.25963e-09, -0.0366847, 0.690625, -0.0773324)
+transform = Transform3D(0.022517, -2.39489e-15, 4.99726e-18, -4.99977e-18, -2.39816e-08, 0.022517, -2.39489e-15, -0.022517, -2.39816e-08, -0.0366847, 0.690625, -0.0773325)
 bone_name = "eyes"
 bone_idx = 28
 
@@ -3779,14 +3779,17 @@ mesh = SubResource("ArrayMesh_ekdxm")
 skeleton = NodePath("")
 
 [node name="belt" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_afpsm")
 skin = SubResource("Skin_fxwxq")
 
 [node name="boots" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_k41ow")
 skin = SubResource("Skin_fxwxq")
 
 [node name="pants" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_jmicc")
 skin = SubResource("Skin_fxwxq")
 
@@ -3799,6 +3802,7 @@ mesh = SubResource("ArrayMesh_nfkh5")
 skin = SubResource("Skin_fxwxq")
 
 [node name="turban" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 10.0
 mesh = SubResource("ArrayMesh_u1hci")
 skin = SubResource("Skin_fxwxq")
 

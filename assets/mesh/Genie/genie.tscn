@@ -2297,7 +2297,7 @@ bones/58/rotation = Quaternion(2.25388e-09, 3.31607e-09, -0.0284084, 0.999596)
 bones/58/scale = Vector3(1, 1, 1)
 
 [node name="eye" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.0294317, 2.06046e-10, -1.46714e-10, 5.857e-10, -0.000225524, 0.0294308, 4.63697e-10, -0.0294308, -0.000225518, -0.0399879, 0.766275, -0.0680344)
+transform = Transform3D(0.0294317, 2.42431e-09, 8.29219e-10, -1.30562e-09, -0.000225497, 0.0294308, 2.76617e-09, -0.0294308, -0.000225491, -0.0399879, 0.766275, -0.0680343)
 bone_name = "eye"
 bone_idx = 34
 
@@ -2306,7 +2306,7 @@ mesh = SubResource("ArrayMesh_8g7ul")
 skeleton = NodePath("")
 
 [node name="eyebrows" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.0205187, -0.00285309, 0.00119998, -0.00483263, -4.9246e-06, 0.00560314, -0.006453, -0.00906834, -0.00038058, -0.0438727, 0.791497, -0.0957451)
+transform = Transform3D(0.0205187, -0.00285308, 0.00119997, -0.00483261, -4.92018e-06, 0.00560314, -0.00645299, -0.00906834, -0.000380575, -0.0438727, 0.791498, -0.0957451)
 bone_name = "eyebrows"
 bone_idx = 35
 
@@ -2315,7 +2315,7 @@ mesh = SubResource("ArrayMesh_8v4a1")
 skeleton = NodePath("")
 
 [node name="hair" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(1, -1.35404e-08, -3.97589e-09, 2.84023e-08, 1, 5.96046e-08, 1.27685e-08, 1.78814e-07, 1, 8.44781e-09, 1.78814e-07, 0.00817844)
+transform = Transform3D(1, 1.90403e-08, -7.95977e-08, -3.5859e-08, 1, -1.51992e-06, 9.09996e-08, 1.75834e-06, 1, -1.42982e-08, 4.17233e-07, 0.00817775)
 bone_name = "hair"
 bone_idx = 36
 
@@ -2324,7 +2324,7 @@ mesh = SubResource("ArrayMesh_div8p")
 skeleton = NodePath("")
 
 [node name="mustache" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(0.0278464, 1.94692e-10, -2.99232e-11, 5.54393e-10, -0.000179757, 0.00598207, 4.38636e-10, -0.0278453, -3.86164e-05, 0.00167861, 0.692679, -0.109284)
+transform = Transform3D(0.0278464, 2.29454e-09, 1.67897e-10, -1.23505e-09, -0.000179715, 0.00598207, 2.61709e-09, -0.0278452, -3.86075e-05, 0.00167862, 0.69268, -0.109284)
 bone_name = "mustache"
 bone_idx = 37
 
@@ -2333,14 +2333,17 @@ mesh = SubResource("ArrayMesh_d81la")
 skeleton = NodePath("")
 
 [node name="belt" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_mifsy")
 skin = SubResource("Skin_rxxmt")
 
 [node name="cufs" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_jx7wc")
 skin = SubResource("Skin_rxxmt")
 
 [node name="genie" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+lod_bias = 5.0
 mesh = SubResource("ArrayMesh_62068")
 skin = SubResource("Skin_rxxmt")
 

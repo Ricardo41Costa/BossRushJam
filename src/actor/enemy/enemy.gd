@@ -1,7 +1,6 @@
 extends Actor
 class_name Enemy
 
-@onready var state_timer = $StateTimer
 @onready var player = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP)
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var is_attack = false

@@ -7,12 +7,10 @@ func _ready():
 	$Panel/VBoxContainer/Start.grab_focus()
 
 func _on_start_pressed():
-	pass
-	#SceneManager.change_scene(self, "res://src/scene/Prototype.tscn")
+	SceneManager.change_scene(GameManager.get_scene_path())
 
 func _on_credits_pressed():
 	pass
-	#SceneManager.change_scene(self, "res://src/gui/Screen/Credits/credits.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

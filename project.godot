@@ -10,9 +10,15 @@ config_version=5
 
 [application]
 
-config/name="BossRushJam"
+config/name="Samirah's Arena"
+config/version="1.0"
+run/main_scene="res://src/scene/MainScreen/MainScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://SplashLogo.png"
+boot_splash/fullsize=false
+config/icon="res://game_icon.png"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
@@ -20,6 +26,14 @@ Constants="*res://src/utils/Constants.gd"
 SceneManager="*res://src/utils/SceneManager/SceneManager.tscn"
 DialogManager="*res://src/utils/DialogManager/DialogManager.tscn"
 GameManager="*res://src/utils/GameManager/GameManager.tscn"
+
+[display]
+
+window/size/mode=3
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://mouse_cursor.png"
 
 [file_customization]
 
@@ -113,3 +127,7 @@ game_pause={
 3d_physics/layer_6="Projectile"
 3d_physics/layer_7="EnemyAttack"
 3d_physics/layer_8="Explosion"
+
+[rendering]
+
+mesh_lod/lod_change/threshold_pixels=0.0

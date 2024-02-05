@@ -8,4 +8,5 @@ script = ExtResource("1_tjfhf")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_iwu3o")
-volume_db = -2.0
+volume_db = -5.0
+pitch_scale = 0.5

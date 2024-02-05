@@ -26,6 +26,7 @@ Constants="*res://src/utils/Constants.gd"
 SceneManager="*res://src/utils/SceneManager/SceneManager.tscn"
 DialogManager="*res://src/utils/DialogManager/DialogManager.tscn"
 GameManager="*res://src/utils/GameManager/GameManager.tscn"
+AudioManager="*res://src/utils/AudioManager/AudioManager.tscn"
 
 [display]
 

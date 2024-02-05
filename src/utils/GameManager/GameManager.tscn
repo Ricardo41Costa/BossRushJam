@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs5tdsohvhh16"]
+[gd_scene load_steps=9 format=3 uid="uid://cs5tdsohvhh16"]
 
 [ext_resource type="Script" path="res://src/utils/GameManager/GameManager.gd" id="1_d1xvo"]
 [ext_resource type="Texture2D" uid="uid://cm6tpapcll6vi" path="res://assets/img/health_bar_under.png" id="2_fb5iu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbaqnkkw55b8x" path="res://assets/img/health_bar_boss_under.png" id="5_4ine2"]
 [ext_resource type="Texture2D" uid="uid://dg84pgdq1mwcw" path="res://assets/img/health_bar_boss_progress.png" id="6_la7ck"]
 [ext_resource type="PackedScene" uid="uid://b5m6s4584c8mq" path="res://src/ui/screen/Pause/Pause.tscn" id="7_noxqb"]
+[ext_resource type="AudioStream" uid="uid://dq2t43ilv1ee4" path="res://assets/audio/player_swap.mp3" id="8_afaqg"]
 
 [node name="SwitchManager" type="Control"]
 layout_mode = 3
@@ -63,6 +64,10 @@ one_shot = true
 [node name="NextSceneTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="SwapAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_afaqg")
+pitch_scale = 0.5
 
 [connection signal="timeout" from="SwapTimer" to="." method="_on_timeout"]
 [connection signal="timeout" from="NextSceneTimer" to="." method="_on_next_scene_timeout"]

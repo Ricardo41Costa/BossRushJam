@@ -34,6 +34,7 @@ func game_over(next_scene):
 	change_scene(next_scene, "Loading2")
 
 func change_scene(next_scene, loading_animation : String = "Loading"):
+	AudioManager.end_background()
 	GameManager.set_in_game(false)
 	GameManager.reset()
 	is_changing = true

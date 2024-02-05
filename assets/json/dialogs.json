@@ -20,7 +20,9 @@
 	],
 	"tutorial4":[
 		"You can shoot with the [Left Mouse Button] or [Right Mouse Button] to mark a object,",
-		"To exchange places with the object, you need to press [Shift]."
+		"To exchange places with the object, you need to press [Shift],",
+		"If two objects are marked, then both will exchange places,",
+		"If only one object is marked, then only you will switch places."
 	],
 	"tutorial5":[
 		"Gravity is your friend.",

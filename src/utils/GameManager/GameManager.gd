@@ -18,7 +18,7 @@ var scenes_paths : Array = [
 	"res://src/scene/MainSceneTutorial.tscn", 
 	"res://src/scene/MainSceneWarrior.tscn",
 	"res://src/scene/MainSceneUnicorn.tscn",
-	#"res://src/scene/MainSceneDjinn.tscn"
+	"res://src/scene/MainSceneDjinn.tscn"
 ]
 
 func _on_timeout():
@@ -49,6 +49,7 @@ func _input(event):
 			right_prop = null
 			
 			change_over_texture()
+			play_audio()
 			return
 		
 		if left_prop != null:
@@ -70,6 +71,7 @@ func _input(event):
 			left_prop = null
 			
 			change_over_texture()
+			play_audio()
 			return
 		
 		if right_prop != null:
@@ -91,6 +93,7 @@ func _input(event):
 			right_prop = null
 			
 			change_over_texture()
+			play_audio()
 			return
 
 func _on_next_scene_timeout():
@@ -105,6 +108,10 @@ func reset():
 	left_prop = null
 	right_prop = null
 	change_over_texture()
+
+func play_audio():
+	var audio = $SwapAudio
+	audio.play()
 
 func start_next_scene():
 	var next_scene_timer = $NextSceneTimer

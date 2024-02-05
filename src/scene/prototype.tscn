@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4j401vfhl8ci"]
+[gd_scene load_steps=9 format=3 uid="uid://d4j401vfhl8ci"]
 
 [ext_resource type="PackedScene" uid="uid://etft716r1n5g" path="res://assets/mesh/Prototype/blockout.tscn" id="1_2k77m"]
 [ext_resource type="PackedScene" uid="uid://bndaskydtaue0" path="res://src/actor/player/player.tscn" id="1_dn088"]
 [ext_resource type="PackedScene" uid="uid://ds267i5cu4crm" path="res://src/prop/TestProp/TestProp1.tscn" id="2_iu1br"]
 [ext_resource type="PackedScene" uid="uid://b2vuji3gqw1cp" path="res://src/prop/TestProp/TestProp2.tscn" id="3_np1vp"]
+[ext_resource type="PackedScene" uid="uid://jwxt30xuwsct" path="res://src/prop/Projectile/EnergyBall/EnergyBall.tscn" id="5_vardr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gmeif"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,7 +33,7 @@ environment = SubResource("Environment_2bvcp")
 [node name="actor" type="Node3D" parent="."]
 
 [node name="Player" parent="actor" instance=ExtResource("1_dn088")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -2.1365, 0)
+transform = Transform3D(-0.346174, 0, -0.608411, 0, 0.7, 0, 0.608411, 0, -0.346174, 13.6494, -2.1365, 8.98673)
 
 [node name="prop" type="Node3D" parent="."]
 
@@ -53,3 +54,7 @@ transform = Transform3D(0.0141018, 0, 0.999901, 0, 1, 0, -0.999901, 0, 0.0141018
 
 [node name="TestProp6" parent="prop" instance=ExtResource("3_np1vp")]
 transform = Transform3D(0.0141018, 0, 0.999901, 0, 1, 0, -0.999901, 0, 0.0141018, -4.95752, -2.12518, 9.86985)
+
+[node name="EnergyBall" parent="prop" instance=ExtResource("5_vardr")]
+transform = Transform3D(-0.85723, 0, 0.514933, 0, 1, 0, -0.514933, 0, -0.85723, -13.7799, 8.18305, 7.51147)
+target_type = 0

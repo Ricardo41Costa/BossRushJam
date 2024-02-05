@@ -15,7 +15,7 @@ var right_prop : Prop = null
 var is_in_game : bool = false
 var scene_index : int = 0
 var scenes_paths : Array = [
-	#"res://src/scene/MainSceneTutorial.tscn", 
+	"res://src/scene/MainSceneTutorial.tscn", 
 	"res://src/scene/MainSceneWarrior.tscn",
 	"res://src/scene/MainSceneUnicorn.tscn",
 	#"res://src/scene/MainSceneDjinn.tscn"

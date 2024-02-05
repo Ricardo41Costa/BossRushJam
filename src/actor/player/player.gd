@@ -18,7 +18,9 @@ func _ready():
 	GameManager.set_health_value(HEALTH)
 
 func _physics_process(delta):
-	direction = get_direction()
+	if not DialogManager.is_dialog_visible:
+		direction = get_direction()
+	
 	match state:
 		Constants.IDLE:
 			check_state()
@@ -62,6 +64,9 @@ func _process(_delta):
 		spring_arm.global_transform.origin = global_transform.origin
 
 func _input(event):
+	if DialogManager.is_dialog_visible:
+		return
+	
 	if HEALTH <= 0 or state == Constants.HURT:
 		return
 	

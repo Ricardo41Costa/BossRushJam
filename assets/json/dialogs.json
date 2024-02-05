@@ -9,25 +9,20 @@
 	"teste3":[
 		"XISDE TESTE LMFAO :DDDDDDDDDDDD"
 	],
-	"prototype1":[
-		"Try to capture all the ghosts and reach the finish line.",
-		"Stealth is recommended but not required."
+	"tutorial1":[
+		"The red pots are very volatile and, if not handled with care, can cause explosions.",
 	],
-	"prototype2":[
-		"Use tall grass to sneak or hide from ghosts."
+	"tutorial2":[
+		"The yellow pots contain medicine that can heal any injury.",
 	],
-	"prototype3":[
-		"Big Rock"
+	"tutorial3":[
+		"When you are done playing around with your powers, approach the gate to start.",
 	],
-	"prototype4":[
-		"If you can't capture the blue ghosts don't worry!",
-		"They will respawn if you restart the checkpoint."
+	"tutorial4":[
+		"You can shoot with the [Left Mouse Button] or [Right Mouse Button] to mark a object,",
+		"To exchange places with the object, you need to press [Shift]."
 	],
-	"prototype5":[
-		"( ͡° ͜ʖ ͡°)"
-	],
-	"prototype6":[
-		"Pay attetion for the eye below your health bar!",
-		"It indicates if you have been detected by any ghosts."
+	"tutorial5":[
+		"Gravity is your friend.",
 	],
 }
